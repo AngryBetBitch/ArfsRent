@@ -1,0 +1,603 @@
+﻿@page
+
+@model GP_West
+@{ Layout = "/Pages/Shared/_TestLayout.cshtml"; }
+
+<h1>Rent FTTB West</h1>
+<div class="containerWest">
+    <div class="box-WestCheck">
+        <div class="card text-dark bg-warning mb-3">
+            <div class="card-body">
+                <canvas id="myChart"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-West">
+        <div class="card text-dark bg-warning mb-3">
+            <div class="card-body">
+                <canvas id="myChartArch"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="box-WestTickets">
+        <div class="card text-dark bg-warning mb-3">
+            <div class="card-body">
+                <canvas id="myChartVologda"></canvas>
+            </div>
+        </div>
+    </div>
+    <div class="box-RegionWest">
+        <div class="card text-dark bg-warning mb-3">
+            <div class="card-body">
+                <canvas id="myChartIvanovo"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-TiktopWest">
+        <div class="card text-dark bg-warning mb-3">
+            <div class="card-body">
+                <canvas id="myChartKalinin"></canvas>
+            </div>
+        </div>
+    </div>
+
+    <div class="box-HouseWest">
+        <div class="card text-dark bg-warning mb-3">
+            <div class="card-body">
+                <canvas id="myChartKaluga"></canvas>
+            </div>
+        </div>
+    </div>
+        </div>
+
+        <div class="containerWest1">
+            <div class="box-West1">
+                <div class="card text-dark bg-warning mb-3">
+                    <div class="card-body">
+                        <canvas id="myChartKostroma"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="box-West2">
+                <div class="card text-dark bg-warning mb-3">
+                    <div class="card-body">
+                        <canvas id="myChartMurmansk"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="box-West3">
+                <div class="card text-dark bg-warning mb-3">
+                    <div class="card-body">
+                        <canvas id="myChartPeter"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="box-West4">
+                <div class="card text-dark bg-warning mb-3">
+                    <div class="card-body">
+                        <canvas id="myChartSmolensk"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="box-West5">
+                <div class="card text-dark bg-warning mb-3">
+                    <div class="card-body">
+                        <canvas id="myChartTver"></canvas>
+                    </div>
+                </div>
+            </div>
+            <div class="box-West6">
+                <div class="card text-dark bg-warning mb-3">
+                    <div class="card-body">
+                        <canvas id="myChartTula"></canvas>
+                    </div>
+                </div>
+            </div>
+                </div>
+
+
+                <div class="containerWest2">
+                    <div class="box-West7">
+                        <div class="card text-dark bg-warning mb-3">
+                            <div class="card-body">
+                                <canvas id="myChartYaro"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-West8">
+                        <div class="card text-dark bg-warning mb-3">
+                            <div class="card-body">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th>Дома</th>
+                                        <th>ГП</th>
+                                        <th>Регион</th>
+                                        <th>AAB</th>
+                                    </tr>
+
+                                    @for (int i = 0; i < Model.publicListOHouses.Count; i++)
+                                    {
+                                        <tr>
+                                            <th>@(Model.publicListOHouses[i].Split("|")[0])</th>
+                                            <th>@(Model.publicListOHouses[i].Split("|")[1])</th>
+                                            <th>@(Model.publicListOHouses[i].Split("|")[2])</th>
+                                            <th>@(Model.publicListOHouses[i].Split("|")[3])</th>
+                                        </tr>
+                                    }
+                                </table>
+                                <canvas id="ChartWestD"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="box-West9">
+                        <div class="card text-dark bg-warning mb-3">
+                            <div class="card-body">
+                                <table class="table table-sm">
+                                    <tr>
+                                        <th>Ticket</th>
+                                        <th>Reg</th>
+                                        <th>AAB</th>
+                                        <th>CREATED</th>
+                                        <th>H</th>
+                                    </tr>
+
+                                    @for (int i = 0; i < Model.publicListOfTickets.Count; i++)
+                                    {
+                                        <tr>
+                                            <th>@(Model.publicListOfTickets[i].Split("|")[0])</th>
+                                            <th>@(Model.publicListOfTickets[i].Split("|")[1])</th>
+                                            <th>@(Model.publicListOfTickets[i].Split("|")[2])</th>
+                                            <th>@(Model.publicListOfTickets[i].Split("|")[3])</th>
+                                            <th>@(Model.publicListOfTickets[i].Split("|")[4])</th>
+                                        </tr>
+                                    }
+                                </table>
+                            </div>
+                        </div>
+                    </div>  
+                    <div>@Model.DtLoad</div>
+                        </div>
+
+                <script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.LARFSW),
+                label: "Запад",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineWest) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 1 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+                <script>
+    var ctx = document.getElementById('myChartArch').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumArch),
+                label: "Архангельский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineArch) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 1 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+
+            ]
+        },
+    });
+                </script>
+
+                <script>
+    var ctx = document.getElementById('myChartIvanovo').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumIvanovo),
+                label: "Ивановский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineIvanovo) ,
+                        label: "arfs",
+                         borderColor: "#000000",
+                         backgroundColor: "#ffffff",
+                        borderWidth: 0.5,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+                <script>
+    var ctx = document.getElementById('myChartVologda').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumVologda),
+                label: "Вологодский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineVologda) ,
+                        label: "arfs",
+                         borderColor: "#000000",
+                         backgroundColor: "#ffffff",
+                        borderWidth: 0.5,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+                <script>
+    var ctx = document.getElementById('myChartKalinin').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumKalinin),
+                label: "Калининградский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineKalinin) ,
+                        label: "arfs",
+                         borderColor: "#000000",
+                         backgroundColor: "#ffffff",
+                        borderWidth: 0.5,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+                <script>
+    var ctx = document.getElementById('myChartKaluga').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumKaluga),
+                label: "Калужский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineKaluga) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 1 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+                <script>
+    var ctx = document.getElementById('myChartKostroma').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumKostroma),
+                label: "Костромской ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineKostroma) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 0.5 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                        pointRadius:0
+                    }
+            ]
+        },
+    });
+                </script>
+
+
+                <script>
+    var ctx = document.getElementById('myChartMurmansk').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumMurmansk),
+                label: "Мурманский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineMurmansk) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 1 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+                <script>
+    var ctx = document.getElementById('myChartPeter').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumPeter),
+                label: "Санкт-Петербургский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LinePeter) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 1 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+                <script>
+    var ctx = document.getElementById('myChartSmolensk').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumSmol),
+                label: "Смоленский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineSmol) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 1 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+                <script>
+    var ctx = document.getElementById('myChartTver').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumTver),
+                label: "Тверской ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineTver) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 1 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+
+                <script>
+    var ctx = document.getElementById('myChartTula').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumTula),
+                label: "Тульский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            },
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineTula) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 1 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+                <script>
+    var ctx = document.getElementById('myChartYaro').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: @Html.Raw(Model.SumDates),
+            datasets: [{
+                data: @(Model.SumYaros),
+                label: "Ярославский ф-л",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            }
+                ,
+                     {
+                        labels: @Html.Raw(Model.SumDates),
+                    data: @(Model.LineYaro) ,
+                        label: "arfs",
+                        borderColor: "#000000",
+                        backgroundColor: "#ffffff",
+                        borderWidth: 1 ,
+                        borderDash: [5, 5],
+                        type: 'line',
+                         fill: false,
+                         pointRadius: 0
+                    }
+            ]
+        },
+    });
+                </script>
+
+                        <script>
+        var ctx = document.getElementById('ChartWestD').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: @Html.Raw(Model.SumFilWest),
+                datasets: [{
+                    data: @(Model.SumGPWest),
+                    borderColor: [
+                        "#3cba9f",
+                        "#ffa500",
+                        "#c45850",
+                        "#C0C0C0",
+                        "#808000",
+                        "#008B8B",
+                        "#B22222",
+                        "#C71585",
+                        "#9370DB",
+                        "#191970",
+                    ],
+                    backgroundColor: [
+                        "#3cba9f",
+                        "#ffa500",
+                        "#c45850",
+                        "#C0C0C0",
+                        "#808000",
+                        "#008B8B",
+                        "#B22222",
+                        "#C71585",
+                        "#9370DB",
+                        "#191970",
+                    ],
+                    borderWidth: 2,
+                }]
+            },
+            options: {
+                scales: {
+                    xAxes: [{
+                        display: false,
+                    }],
+                    yAxes: [{
+                        display: false,
+                    }],
+                }
+            },
+
+        });
+                        </script>

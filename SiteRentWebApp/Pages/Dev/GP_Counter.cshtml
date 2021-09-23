@@ -1,0 +1,15 @@
+﻿@page
+
+@model GP_Counter
+@{ Layout = "/Pages/Shared/_TestLayout.cshtml"; }
+
+    <h1>Counter</h1>
+
+    <p>Current count: @(Model.currentCount.ToString())</p>
+    <p>@(Model.name.Split("|")[0])</p>
+    <p>@(Model.name.Split("|")[1])</p>
+
+
+  
+
+
