@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Boxiocns CDN Link -->
+    <link href='https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css' rel='stylesheet'>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="~/lib/bootstrap/dist/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.min.js"></script>
+
+</head>
+<body>
+    <div class="sidebar close">
+        <div class="logo-details">
+            <i class='bx bxl-c-plus-plus'></i>
+            <span class="logo_name">SiteRent</span>
+        </div>
+        <ul class="nav-links">
+            <li>
+                <a href="http://ms-siterent001/Index?e8fc1ab2ccf347707bbd7c8df1b2232b=1">
+                    <i class='bx bx-grid-alt'></i>
+                    <span class="link_name">Dashboard</span>
+                </a>
+                <ul class="sub-menu blank">
+                    <li><a class="link_name" href="#">Dashboard</a></li>
+                </ul>
+            </li>
+
+            <ul class="iocn-link">
+                <li>
+                    <a href="http://ms-siterent001/arfs/monitor">
+                        <i class='bx bx-grid-alt'></i>
+                        <span class="link_name">Monitor</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="http://ms-siterent001/arfs/monitor">Monitor</a></li>
+                    </ul>
+                </li>
+
+                <li>
+
+
+                <li>
+                    <div class="iocn-link">
+                        <a href="#">
+                            <i class='bx bx-book-alt'></i>
+                            <span class="link_name">Regions</span>
+                        </a>
+                        <i class='bx bxs-chevron-down arrow'></i>
+                    </div>
+                    <ul class="sub-menu">
+                        <li><a class="link_name" href="#">Regions</a></li>
+                        <li><a href="http://ms-siterent001/arfs/moscow?e8fc1ab2ccf347707bbd7c8df1b2232b=1">Moscow</a></li>
+                        <li><a href="http://ms-siterent001/arfs/west?e8fc1ab2ccf347707bbd7c8df1b2232b=1">West</a></li>
+                        <li><a href="http://ms-siterent001/arfs/center?e8fc1ab2ccf347707bbd7c8df1b2232b=1">Center</a></li>
+                        <li><a href="http://ms-siterent001/arfs/south?e8fc1ab2ccf347707bbd7c8df1b2232b=1">South</a></li>
+                        <li><a href="http://ms-siterent001/arfs/east?e8fc1ab2ccf347707bbd7c8df1b2232b=1">East</a></li>
+                    </ul>
+                </li>
+
+                <li>
+                    <a href="#">
+                        <i class='bx bx-cog'></i>
+                        <span class="link_name">Setting</span>
+                    </a>
+                    <ul class="sub-menu blank">
+                        <li><a class="link_name" href="#">Setting</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <div class="profile-details">
+                        <div class="profile-content">
+                            <img src="https://img2.freepng.ru/20180413/rhq/kisspng-sphere-circle-beeline-taxi-logos-5ad16fafda9807.9613225415236750558954.jpg" alt="profileImg">
+                        </div>
+                        <div class="name-job">
+                            <div class="profile_name">Штаб квартира</div>
+                            <div class="job">Manager</div>
+                        </div>
+                        <i class='bx bx-log-out'></i>
+                    </div>
+                </li>
+            </ul>
+    </div>
+    <section class="home-section">
+        <div class="home-content">
+            <i class='bx bx-menu'></i>
+            <span class="text">Меню задач</span>
+            <!-- <div class="text-center">-->
+            <!-- <h1 class="display-4">Welcome</h1>-->
+        </div>
+    </section>
+    <script>
+        let arrow = document.querySelectorAll(".arrow");
+        for (var i = 0; i < arrow.length; i++) {
+            arrow[i].addEventListener("click", (e) => {
+                let arrowParent = e.target.parentElement.parentElement;//selecting main parent of arrow
+                arrowParent.classList.toggle("showMenu");
+            });
+        }
+        let sidebar = document.querySelector(".sidebar");
+        let sidebarBtn = document.querySelector(".bx-menu");
+        console.log(sidebarBtn);
+        sidebarBtn.addEventListener("click", () => {
+            sidebar.classList.toggle("close");
+        });
+    </script>
+    <div class="maincontainer">        
+            @RenderBody()
+    </div>    
+    @RenderSection("Scripts", required: false)
+</body>
+    </html>

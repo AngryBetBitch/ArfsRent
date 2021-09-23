@@ -1,0 +1,143 @@
+﻿@page
+
+@model GP_FINAL
+@{ Layout = "/Pages/Shared/_TestLayout.cshtml"; }
+
+<h1>Rent FTTB</h1>
+<div class="containerRus">
+    <div class="box-RusCheck">
+       
+        <canvas id="myChart"></canvas>
+    </div>
+
+    <div class="box-Russia">
+        <p>
+            Russia:
+            @(Model.name.Split("|")[0])
+            Dynamics:
+
+            @(Model.SumR = int.Parse(Model.resultSouth.Split("|")[3]) + int.Parse(Model.resultCenter.Split("|")[3]) + int.Parse( Model.resultWest.Split("|")[3]) + int.Parse(Model.resultEast.Split("|")[3]) + int.Parse(Model.resultMOSCOW.Split("|")[3]))
+
+        </p>
+    </div>
+
+    <div class="box-Tickets">
+
+        <table>
+            <tr>
+                <th>Ticket</th>
+                <th>Reg</th>
+                <th>AAB</th>
+                <th>CREATED</th>
+                <th>H</th>
+            </tr>
+
+            @for (int i = 0; i < Model.publicListOfTickets.Count; i++)
+            {
+                <tr>
+                    <th>@(Model.publicListOfTickets[i].Split("|")[0])</th>
+                    <th>@(Model.publicListOfTickets[i].Split("|")[1])</th>
+                    <th>@(Model.publicListOfTickets[i].Split("|")[2])</th>
+                    <th>@(Model.publicListOfTickets[i].Split("|")[3])</th>
+                    <th>@(Model.publicListOfTickets[i].Split("|")[4])</th>
+                </tr>
+            }
+        </table>
+
+    </div>
+
+    <div class="box-Regions">
+        <p></p>
+        <p></p>
+
+        <table>
+            <tr>
+                <th>Регион</th>
+                <th>Вчера</th>
+                <th>&nbsp;&nbsp;H</th>
+                <th>Dnm</th>
+                <th>&nbsp;	AAB</th>
+            </tr>
+
+            <tr>
+                <th>@(Model.resultMOSCOW.Split("|")[0])</th>
+                <th>@(Model.resultMOSCOW.Split("|")[1])</th>
+                <th>@(Model.resultMOSCOW.Split("|")[2])</th>
+                <th>@(Model.resultMOSCOW.Split("|")[3])</th>
+                <th>@(Model.resultMOSCOW.Split("|")[4])</th>
+            </tr>
+
+            <tr>
+                <th>@(Model.resultEast.Split("|")[0])</th>
+                <th>@(Model.resultEast.Split("|")[1])</th>
+                <th>@(Model.resultEast.Split("|")[2])</th>
+                <th>@(Model.resultEast.Split("|")[3])</th>
+                <th>@(Model.resultEast.Split("|")[4])</th>
+            </tr>
+            <tr>
+                <th>@(Model.resultWest.Split("|")[0])</th>
+                <th>@(Model.resultWest.Split("|")[1])</th>
+                <th>@(Model.resultWest.Split("|")[2])</th>
+                <th>@(Model.resultWest.Split("|")[3])</th>
+                <th>@(Model.resultWest.Split("|")[4])</th>
+            </tr>
+            <tr>
+                <th>@(Model.resultCenter.Split("|")[0])</th>
+                <th>@(Model.resultCenter.Split("|")[1])</th>
+                <th>@(Model.resultCenter.Split("|")[2])</th>
+                <th>@(Model.resultCenter.Split("|")[3])</th>
+                <th>@(Model.resultCenter.Split("|")[4])</th>
+            </tr>
+            <tr>
+                <th>@(Model.resultSouth.Split("|")[0])</th>
+                <th>@(Model.resultSouth.Split("|")[1])</th>
+                <th>@(Model.resultSouth.Split("|")[2])</th>
+                <th>@(Model.resultSouth.Split("|")[3])</th>
+                <th>@(Model.resultSouth.Split("|")[4])</th>
+
+            </tr>
+        </table>
+    </div>
+    <div class="box-Tiktop">
+
+ 
+
+            <table>
+                <tr>
+                    <th>Дома</th>
+                    <th>ГП</th>
+                    <th>Регион</th>
+                    <th>AAB</th>
+                </tr>
+
+                @for (int i = 0; i < Model.publicListOHouses.Count; i++)
+                {
+                    <tr>
+                        <th>@(Model.publicListOHouses[i].Split("|")[0])</th>
+                        <th>@(Model.publicListOHouses[i].Split("|")[1])</th>
+                        <th>@(Model.publicListOHouses[i].Split("|")[2])</th>
+                        <th>@(Model.publicListOHouses[i].Split("|")[3])</th>
+                    </tr>
+                }
+            </table>
+
+        </div>
+    </div>
+
+<script>
+    var ctx = document.getElementById('myChart').getContext('2d');
+    var myChart = new Chart(ctx, {
+        type: 'line',
+        data: {
+            labels: ["1 day", "2 day", "  '3 day", " 4 day", " 5 day", "6 day", "7 day", "7 day", "7 day", "1 day", "2 day", " 3 day", " 4 day", " 5 day", "6 day", "7 day", "7 day", "7 day", "1 day", "2 day", " 3 day", " 4 day", " 5 day", "6 day", "7 day", "7 day", "7 day", "1 day", "2 day", " 3 day"],
+            datasets: [{
+                data: @(Model.SumDays),
+                label: "Total",
+                borderColor: "#3e95cd",
+                backgroundColor: "#7bb6dd",
+                fill: false,
+            }
+            ]
+        },
+    });
+</script>

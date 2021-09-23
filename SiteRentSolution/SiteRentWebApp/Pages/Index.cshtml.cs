@@ -19,7 +19,7 @@ namespace SiteRentWebApp.Pages
 
         public void OnGet()
         {
-
+            string test = "hello live share";
         }
     }
 }

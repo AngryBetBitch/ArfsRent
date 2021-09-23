@@ -1,0 +1,31 @@
+﻿@page
+
+@model GP_Tickets
+@{ Layout = "/Pages/Shared/_TestLayout.cshtml"; }
+
+<h1>Tickets</h1>
+<p>@(Model.name.Split("|")[0])</p>
+<p>@(Model.name.Split("|")[1])</p>
+<p>@(Model.name.Split("|")[2])</p>
+<p>@(Model.name.Split("|")[3])</p>
+<p>@(Model.name.Split("|")[4])</p>
+
+<table>
+    <tr>
+        <th>Ticket</th>
+        <th>Reg</th>
+        <th>AAB</th>
+        <th>CREATED</th>
+        <th>H</th>
+    </tr>
+
+    <tr>
+        <th>@(Model.name.Split("|")[0])</th>
+        <th>@(Model.name.Split("|")[1])</th>
+        <th>@(Model.name.Split("|")[2])</th>
+        <th>@(Model.name.Split("|")[3])</th>
+        <th>@(Model.name.Split("|")[4])</th>
+    </tr>
+</table>
+
+

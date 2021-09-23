@@ -1,0 +1,54 @@
+﻿@page
+
+@model GP_Regions
+@{ Layout = "/Pages/Shared/_TestLayout.cshtml"; }
+
+<h1>Counter</h1>
+
+<table>
+    <tr>
+        <th>Регион</th>
+        <th>H</th>
+        <th>AAB</th>
+        <th>Dynamics</th>
+    </tr>
+
+    <tr>
+        <th>@(Model.resultMOSCOW.Split("|")[0])</th>
+        <th>@(Model.resultMOSCOW.Split("|")[1])</th>
+        <th>@(Model.resultMOSCOW.Split("|")[2])</th>
+        <th>@(Model.resultMOSCOW.Split("|")[3])</th>
+    </tr>
+    <tr>
+        <th>@(Model.resultEast.Split("|")[0])</th>
+        <th>@(Model.resultEast.Split("|")[1])</th>
+        <th>@(Model.resultEast.Split("|")[2])</th>
+        <th>@(Model.resultEast.Split("|")[3])</th>
+    </tr>
+    <tr>
+        <th>@(Model.resultWest.Split("|")[0])</th>
+        <th>@(Model.resultWest.Split("|")[1])</th>
+        <th>@(Model.resultWest.Split("|")[2])</th>
+        <th>@(Model.resultWest.Split("|")[3])</th>
+    </tr>
+    <tr>
+        <th>@(Model.resultCenter.Split("|")[0])</th>
+        <th>@(Model.resultCenter.Split("|")[1])</th>
+        <th>@(Model.resultCenter.Split("|")[2])</th>
+        <th>@(Model.resultCenter.Split("|")[3])</th>
+    </tr>
+    <tr>
+        <th>@(Model.resultSouth.Split("|")[0])</th>
+        <th>@(Model.resultSouth.Split("|")[1])</th>
+        <th>@(Model.resultSouth.Split("|")[2])</th>
+        <th>@(Model.resultSouth.Split("|")[3])</th>
+
+    </tr>
+</table>
+
+
+
+
+
+
+

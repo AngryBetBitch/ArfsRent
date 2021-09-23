@@ -1,23 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\AlAPankov\\source\\repos\\SiteRentSolution\\SiteRentWebApp\\SiteRentWebApp.csproj": {}
+    "C:\\Users\\DTolokonnikov\\source\\repos\\SiteRentAppWebrep\\SiteRentSolution\\SiteRentWebApp\\SiteRentWebApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\AlAPankov\\source\\repos\\SiteRentSolution\\SiteRentWebApp\\SiteRentWebApp.csproj": {
+    "C:\\Users\\DTolokonnikov\\source\\repos\\SiteRentAppWebrep\\SiteRentSolution\\SiteRentWebApp\\SiteRentWebApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\AlAPankov\\source\\repos\\SiteRentSolution\\SiteRentWebApp\\SiteRentWebApp.csproj",
+        "projectUniqueName": "C:\\Users\\DTolokonnikov\\source\\repos\\SiteRentAppWebrep\\SiteRentSolution\\SiteRentWebApp\\SiteRentWebApp.csproj",
         "projectName": "SiteRentWebApp",
-        "projectPath": "C:\\Users\\AlAPankov\\source\\repos\\SiteRentSolution\\SiteRentWebApp\\SiteRentWebApp.csproj",
-        "packagesPath": "C:\\Users\\AlAPankov\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\AlAPankov\\source\\repos\\SiteRentSolution\\SiteRentWebApp\\obj\\",
+        "projectPath": "C:\\Users\\DTolokonnikov\\source\\repos\\SiteRentAppWebrep\\SiteRentSolution\\SiteRentWebApp\\SiteRentWebApp.csproj",
+        "packagesPath": "C:\\Users\\DTolokonnikov\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\DTolokonnikov\\source\\repos\\SiteRentAppWebrep\\SiteRentSolution\\SiteRentWebApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
-          "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\AlAPankov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\DTolokonnikov\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -66,6 +67,14 @@
             "Microsoft.EntityFrameworkCore.Tools": {
               "target": "Package",
               "version": "[5.0.9, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            },
+            "System.Data.SqlClient": {
+              "target": "Package",
+              "version": "[4.8.2, )"
             }
           },
           "imports": [
