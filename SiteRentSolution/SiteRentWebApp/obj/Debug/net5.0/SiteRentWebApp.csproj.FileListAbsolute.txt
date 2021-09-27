@@ -847,3 +847,4 @@ C:\Users\DTolokonnikov\source\repos\SiteRentAppWebrep\SiteRentSolution\SiteRentW
 C:\Users\DTolokonnikov\source\repos\SiteRentAppWebrep\SiteRentSolution\SiteRentWebApp\obj\Debug\net5.0\Razor\Pages\Dev\GP_Regions.cshtml.g.cs
 C:\Users\DTolokonnikov\source\repos\SiteRentAppWebrep\SiteRentSolution\SiteRentWebApp\obj\Debug\net5.0\Razor\Pages\Dev\GP_FINAL.cshtml.g.cs
 C:\Users\DTolokonnikov\source\repos\SiteRentAppWebrep\SiteRentSolution\SiteRentWebApp\obj\Debug\net5.0\Razor\Pages\Dev\GP_West.cshtml.g.cs
+C:\Users\DTolokonnikov\source\repos\SiteRentAppWebrep\SiteRentSolution\SiteRentWebApp\obj\Debug\net5.0\SiteRentWebApp.csproj.AssemblyReference.cache
